@@ -55,6 +55,7 @@ align-items: center;
   border-style: solid;
   border-radius: 50px;
   font-size: 20px;
+  padding-left: 10px;
 }
 .contacts{
   width: 100%;
@@ -63,6 +64,7 @@ align-items: center;
   display: flex;
   align-items: center;
   flex-direction: column;
+  overflow: scroll;
 }
 .single{
   width: 90%;

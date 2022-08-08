@@ -1,63 +1,107 @@
-import React , {useState, useEffect, useCallback} from 'react'
-import type { NextPage } from 'next'
-import Head from 'next/head'
+import React, { useState, useEffect, useCallback } from 'react'
 import Image from 'next/image'
+import styled from 'styled-components'
 import styles from '../styles/Home.module.css'
-import axios, {AxiosError} from 'axios'
+import axios, { AxiosError } from 'axios'
+import {useRouter} from 'next/router'
 
-
-
-
-
-export default function Home(){
+export default function Home(): JSX.Element {
+  const router=useRouter()
   const [contacts, setContacts] = useState<any | undefined>(undefined)
 
-  const getContacts = useCallback(() => {
+  const getContacts = useCallback(async() => {
     try {
-      const res: any = axios.get('http://localhost:1337/passenger')
-      if(res.status == 200) {
+      const res = await axios.get('http://localhost:1337/passenger')
+      if (res.status == 200) {
         setContacts(res.data)
       }
-    }catch(e) {
+    } catch (e) {
       const err = e as AxiosError
       console.warn(err)
     }
-  }, [contacts])
+  }, [])
+
   useEffect(() => {
     getContacts()
-  }, [])
+  }, [getContacts])
 
   return (
     <div className={styles.container}>
-      <head className={styles.head}>
+      <div className={styles.head}>
         <button>all</button>
         <button>visited</button>
-      </head>
+      </div>
 
       <main className={styles.main}>
         <div className={styles.search}>
           <div>
-            <Image src="/search.svg" width={50} height={50}/>
+            <Image src='/search.svg' alt="SearchIcon" width={50} height={50} />
           </div>
-          <input  placeholder='type to search...'/>
+          <input placeholder="type to search..."/>
           {/* <Image src='/more.svg' width={50} height={50}/> */}
         </div>
-        <div className={styles.contacts}>
-          <div className={styles.single}>
-            <div className={styles.logo}>
-              <Image src="/person.svg" width={30} height={30}/>
-            </div>
-              <div className={styles.detail}>
-                <text className='name'>adawd</text>
-                <text className='phone'>adad</text>
-                <text className='city'>adad</text>
+        <div className={styles.contacts} >
+          {contacts == undefined ? (
+            <></>
+          ) : (
+            <>
+            {contacts.items.map((data: any, index: number) => (
+              <SingleContact key={index} onClick={()=>{
+                router.push({
+                  pathname:'/singleContact',
+                  query:{data: data.id}
+                })
+              }}>
+              <div className='logo'>
+                <Image
+                  src={data.avatar}
+                  alt="PersonIcon"
+                  width={30}
+                  height={30}
+                />
+              </div>
+              <div className='detail'>
+                <span className="name">{data.name}</span>
+                <span className="phone">{data.phone}</span>
+                <span className="city">{data.address}</span>
               </div>
               <div className={styles.right}></div>
-          </div>
+            </SingleContact>
+            ))}
+            </>
+          )}
+          
         </div>
       </main>
     </div>
   )
 }
 
-
+const SingleContact = styled.div`
+  width: 90%;
+  height: 70px;
+  border: 1px solid black;
+  margin-bottom: 2px;
+  flex-direction: row;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  div[class='logo']{
+  width: 50px;
+  height: 50px;
+  background-color: aliceblue;
+  border-radius: 50%;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+}
+div[class='detail']{
+  width: 80%;
+  height: 100%;
+  border-width: 1px;
+  border-color: red;
+  border-style: solid;
+  display: flex;
+  flex-direction: column;
+}
+`
