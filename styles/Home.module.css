@@ -102,3 +102,58 @@ align-items: center;
   height: 100%;
   background-color: yellow;
 }
+.top{
+  width: 450px;
+  height: 75px;
+  background-color: blue;
+  display: flex;
+  align-items: center;
+  padding-left: 10px;
+}
+.back{
+  width: 50px;
+  height: 50px;
+  border-width: 1px;
+  border-color: yellow;
+  border-style: solid;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.holder{
+  width: 80%;
+  height: 90%;
+  background-color: brown;
+  flex-direction: column;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+.hpic {
+  width: 150px;
+  height: 150px;
+  background-color: blue;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-bottom: 20px;
+}
+.hdetail{
+  width: 90%;
+  height: 30%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-direction: column;
+  background-color: blue;
+}
+.hdetail p {
+  font-size: xx-large;
+}
+.hbio{
+  width: 90%;
+  height: 30%;
+  background-color: blue;
+}
