@@ -8,23 +8,37 @@
 .head{
 width: 450px;
 height: 150px;
-background-color: yellow;
+background-color: #1f1d29;
 display: flex;
 flex-direction: row;
 justify-content: space-around;
 align-items: center;
 }
-.head button{
+.btnl{
   width: 150px;
   height: 70px;
   border-radius: 50px;
-
+  background-color:#5259eb;
+  border:1px solid #1f1d29;
+  font-size: x-large;
+  font-family: 'Roboto';
+  color: #ccc;
+}
+.btnr{
+  width: 150px;
+  height: 70px;
+  border-radius: 50px;
+  background-color: #1f1d29;
+  border: 1px solid white;
+  font-size: x-large;
+  font-family: 'Roboto';
+  color: #ccc;
 }
 .main {
-  height: 870px;
+  height: 850px;
   width: 450px;
   display: flex;
-  background-color: blue;
+  background-color: #1f1d29;
   flex-direction: column;
   /* justify-content: start; */
   align-items: center;
@@ -32,23 +46,24 @@ align-items: center;
 .search{
   width: 100%;
   height: 80px;
-  background-color: purple;
+  background-color:#1f1d29;
   justify-content: center;
   align-items: center;
   display: flex;
   flex-direction: row;
+  margin-bottom: 15px;
 }
 .search div {
   width: 10%;
   height: 95%;
-  background-color: red;
+  background-color: #1f1d29;
   justify-content: center;
   align-items: center;
   display: flex;
 }
 .search input {
   width: 85%;
-  height: 80%;
+  height: 100%;
   display: flex;
   border-width: 1px;
   /* border-color:blue; */
@@ -56,25 +71,18 @@ align-items: center;
   border-radius: 50px;
   font-size: 20px;
   padding-left: 10px;
+  font-family: 'Roboto';
 }
 .contacts{
   width: 100%;
   height: auto;
-  background-color: green;
+  background-color: #1f1d29;
   display: flex;
   align-items: center;
   flex-direction: column;
-  overflow: scroll;
-}
-.single{
-  width: 90%;
-  height: 70px;
-  border: 1px solid black;
-  margin-bottom: 2px;
-  flex-direction: row;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+  overflow-y: scroll;
+  font-family: 'Roboto';
+  color: #ccc;
 }
 .logo{
   width: 50px;
@@ -85,22 +93,10 @@ align-items: center;
   align-items: center;
   display: flex;
 }
-.detail{
-  width: 80%;
-  height: 100%;
-  border-width: 1px;
-  border-color: red;
-  border-style: solid;
-  display: flex;
-  flex-direction: column;
-}
-/* .detail text{
-  flex-direction: column;
-} */
 .right{
   width: 10%;
   height: 100%;
-  background-color: yellow;
+  /* background-color: yellow; */
 }
 .top{
   width: 450px;

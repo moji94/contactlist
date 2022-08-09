@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
-import '../styles/globals.css'
 import type { AppProps } from 'next/app'
+import '../public/fonts/roboto/roboto.css'
 
 export default function MyApp({ Component, pageProps }: AppProps) {
     const storageCheck = (): void => {
