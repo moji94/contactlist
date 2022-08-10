@@ -14,6 +14,14 @@ export default function Home(): JSX.Element {
         try {
             const res = await axios.get('http://localhost:1337/passenger')
             if (res.status == 200) {
+                const id: number = res.data.id
+                let get: string = window.localStorage.getItem(
+                    '@contacts'
+                ) as string
+                let plus = JSON.parse(get)
+                if (plus.hasOwnProperty(id)) {
+                    const result: any = (id: number) => {}
+                }
                 setContacts(res.data)
             }
         } catch (e) {
@@ -31,7 +39,7 @@ export default function Home(): JSX.Element {
             if (Number.isNaN(Number(val))) {
                 console.log('string')
                 const res = await axios.get(
-                    `http://localhost:1337/passenger/?where={"name":{"contains":${val}}}&sort=createdAt DESC&limit=30`
+                    `http://localhost:1337/passenger/?where={"name":{"contains":"${val}"}}&sort=createdAt DESC&limit=30`
                 )
                 if (res.status == 200) {
                     setContacts(res.data)

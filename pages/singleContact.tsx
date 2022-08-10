@@ -3,6 +3,7 @@ import { useRouter } from 'next/router'
 import axios, { AxiosError } from 'axios'
 import styles from '../styles/Home.module.css'
 import Image from 'next/image'
+import { viewsPlus } from '../utils/main'
 
 export default function SingleContact(): JSX.Element {
     const router = useRouter()
@@ -16,7 +17,7 @@ export default function SingleContact(): JSX.Element {
                 )
                 if (res.status == 200) {
                     setContact(res.data)
-                    // console.log(res.data)
+                    viewsPlus(id)
                 }
             } catch (e) {
                 const err = e as AxiosError
