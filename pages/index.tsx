@@ -7,22 +7,48 @@ import { useRouter } from 'next/router'
 
 export default function Home(): JSX.Element {
     const router = useRouter()
-    const [val, setVal] = useState<any | undefined>(undefined)
-    const [contacts, setContacts] = useState<any | undefined>(undefined)
+    // const [val, setVal] = useState<any | undefined>(undefined)
+    const [contacts, setContacts] = useState<any>(undefined)
 
     const getContacts = useCallback(async (): Promise<void> => {
         try {
             const res = await axios.get('http://localhost:1337/passenger')
             if (res.status == 200) {
-                const id: number = res.data.id
-                let get: string = window.localStorage.getItem(
+                let contact: any = res.data.items
+                let rawViews: string = window.localStorage.getItem(
                     '@contacts'
                 ) as string
-                let plus = JSON.parse(get)
-                if (plus.hasOwnProperty(id)) {
-                    const result: any = (id: number) => {}
+                let plus = JSON.parse(rawViews)
+                if (plus == {}) {
+                    setContacts(res.data.items)
+                } else {
+                    let sortable = []
+                    for (let id in plus) {
+                        sortable.push([id, plus[id]])
+                    }
+                    sortable.sort(function (a, b) {
+                        return a[1] - b[1]
+                    })
+                    let views: any = {}
+                    sortable.forEach(function (item) {
+                        views[item[0]] = item[1]
+                    })
+
+                    const keys: any = Object.keys(views)
+                    let adds: any = []
+                    for (let cid of keys) {
+                        contact.map((data: any, index: number) => {
+                            if (data.id == cid) {
+                                adds.unshift(data)
+
+                                contact.splice(index, 1)
+                            }
+                        })
+                    }
+                    const final: any = Object.values(contact)
+                    let newadds: any = adds.concat(final)
+                    setContacts(newadds)
                 }
-                setContacts(res.data)
             }
         } catch (e) {
             const err = e as AxiosError
@@ -32,24 +58,23 @@ export default function Home(): JSX.Element {
 
     useEffect(() => {
         getContacts()
-    }, [getContacts])
+    }, [])
 
     const getcontbylim = useCallback(async (val: any): Promise<void> => {
         try {
             if (Number.isNaN(Number(val))) {
-                console.log('string')
                 const res = await axios.get(
                     `http://localhost:1337/passenger/?where={"name":{"contains":"${val}"}}&sort=createdAt DESC&limit=30`
                 )
                 if (res.status == 200) {
-                    setContacts(res.data)
+                    setContacts(res.data.items)
                 }
             } else {
                 const res = await axios.get(
                     `http://localhost:1337/passenger/?where={"phone":{"contains":${val}}}&sort=createdAt DESC&limit=30`
                 )
                 if (res.status == 200) {
-                    setContacts(res.data)
+                    setContacts(res.data.items)
                 }
             }
         } catch (e) {
@@ -63,11 +88,6 @@ export default function Home(): JSX.Element {
 
     return (
         <div className={styles.container}>
-            <div className={styles.head}>
-                <button className={styles.btnl}>all</button>
-                <button className={styles.btnr}>visited</button>
-            </div>
-
             <main className={styles.main}>
                 <div className={styles.search}>
                     <div>
@@ -91,7 +111,7 @@ export default function Home(): JSX.Element {
                         <></>
                     ) : (
                         <>
-                            {contacts.items.map((data: any, index: number) => (
+                            {contacts.map((data: any, index: number) => (
                                 <SingleContact
                                     key={index}
                                     onClick={() => {
@@ -163,7 +183,7 @@ const SingleContact = styled.div`
         font-size: 23px;
     }
     span[class='name']:hover {
-        color: red;
+        cursor: pointer;
     }
     span[class='phone'] {
         font-size: 15px;

@@ -37,10 +37,10 @@ export default function SingleContact(): JSX.Element {
             <div className={styles.top}>
                 <div className={styles.back} onClick={router.back}>
                     <Image
-                        src={'/person.svg'}
+                        src={'/back.svg'}
                         alt="PersonIcon"
-                        width={30}
-                        height={30}
+                        width={25}
+                        height={25}
                     />
                 </div>
             </div>
@@ -54,8 +54,8 @@ export default function SingleContact(): JSX.Element {
                                 <Image
                                     src={contact.avatar}
                                     alt="contact'sAvatar"
-                                    width={250}
-                                    height={250}
+                                    width={240}
+                                    height={240}
                                 />
                             </div>
                             <div className={styles.hdetail}>

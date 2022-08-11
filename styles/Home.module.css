@@ -2,37 +2,8 @@
   padding: 10px 10px;
   display: flex;
   flex-direction: column;
-  /* justify-content: start; */
   align-items: center;
-}
-.head{
-width: 450px;
-height: 150px;
-background-color: #1f1d29;
-display: flex;
-flex-direction: row;
-justify-content: space-around;
-align-items: center;
-}
-.btnl{
-  width: 150px;
-  height: 70px;
-  border-radius: 50px;
-  background-color:#5259eb;
-  border:1px solid #1f1d29;
-  font-size: x-large;
-  font-family: 'Roboto';
-  color: #ccc;
-}
-.btnr{
-  width: 150px;
-  height: 70px;
-  border-radius: 50px;
-  background-color: #1f1d29;
-  border: 1px solid white;
-  font-size: x-large;
-  font-family: 'Roboto';
-  color: #ccc;
+  
 }
 .main {
   height: 850px;
@@ -40,7 +11,6 @@ align-items: center;
   display: flex;
   background-color: #1f1d29;
   flex-direction: column;
-  /* justify-content: start; */
   align-items: center;
 }
 .search{
@@ -52,6 +22,7 @@ align-items: center;
   display: flex;
   flex-direction: row;
   margin-bottom: 15px;
+  padding-top: 20px;
 }
 .search div {
   width: 10%;
@@ -66,7 +37,6 @@ align-items: center;
   height: 100%;
   display: flex;
   border-width: 1px;
-  /* border-color:blue; */
   border-style: solid;
   border-radius: 50px;
   font-size: 20px;
@@ -96,45 +66,48 @@ align-items: center;
 .right{
   width: 10%;
   height: 100%;
-  /* background-color: yellow; */
+
 }
 .top{
-  width: 450px;
+  width: 440px;
   height: 75px;
-  background-color: blue;
+  background-color: #1f1d29;
   display: flex;
   align-items: center;
   padding-left: 10px;
 }
 .back{
-  width: 50px;
-  height: 50px;
+  width: 40px;
+  height: 40px;
   border-width: 1px;
-  border-color: yellow;
+  border-color: #ccc;
   border-style: solid;
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
 }
+.back:hover {
+  cursor: pointer;
+}
 .holder{
   width: 80%;
   height: 90%;
-  background-color: brown;
+  background-color:  #1f1d29;
   flex-direction: column;
   display: flex;
   justify-content: space-around;
   align-items: center;
 }
 .hpic {
-  width: 150px;
+  width: 170px;
   height: 150px;
-  background-color: blue;
+  background-color:  #ccc;
   border-radius: 50%;
   display: flex;
   justify-content: center;
   align-items: center;
-  padding-bottom: 20px;
+  padding-bottom: 25px;
 }
 .hdetail{
   width: 90%;
@@ -143,13 +116,23 @@ align-items: center;
   justify-content: space-around;
   align-items: center;
   flex-direction: column;
-  background-color: blue;
+  background-color:  #1f1d29;
 }
 .hdetail p {
   font-size: xx-large;
+  color:#ccc;
+}
+.hdetail span{
+  color: #ccc
 }
 .hbio{
   width: 90%;
   height: 30%;
-  background-color: blue;
+  background-color:  #1f1d29;
+}
+.hbio h2{
+  color: #ccc;
+}
+.hbio p{
+  color: #ccc;
 }

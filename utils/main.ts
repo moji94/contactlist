@@ -7,6 +7,16 @@ export const viewsPlus = (id: any): void => {
         } else {
             plus[id] = 1
         }
+
+        //         let sortable = [];
+        // for (var vehicle in maxSpeed) {
+        //     sortable.push([vehicle, maxSpeed[vehicle]]);
+        // }
+
+        // sortable.sort(function(a, b) {
+        //     return a[1] - b[1];
+        // });
+
         window.localStorage.setItem('@contacts', JSON.stringify(plus))
     }
 }
